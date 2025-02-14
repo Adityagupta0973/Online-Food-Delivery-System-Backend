@@ -16,7 +16,7 @@ SECRET_KEY = 'django-insecure-6jnq=ln+i8usqpyskte^%*&mbw%tef^0^k&)82hifpk*nby--$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['from-our-kitchen-80da3abcca49.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['from-our-kitchen-80da3abcca49.herokuapp.com','127.0.0.1','https://online-food-delivery-system.vercel.app']
 
 
 # Application definition
@@ -88,7 +88,7 @@ MIDDLEWARE = [
 
 ]
 
-CORS_ALLOWED_ORIGINS = ["http://localhost:3000","http://localhost:8000"]
+CORS_ALLOWED_ORIGINS = ["http://localhost:3000","http://localhost:8000","https://online-food-delivery-system.vercel.app"]
 ROOT_URLCONF = 'crud.urls'
 
 TEMPLATES = [
