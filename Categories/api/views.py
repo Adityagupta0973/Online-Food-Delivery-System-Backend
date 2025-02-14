@@ -268,8 +268,8 @@ def createStripeAccount(request):
     accountLinkResponse = stripe.AccountLink.create(
         account = response.id,
         # Get the deployed URL from env variables
-        refresh_url = "http://localhost:3000/partner-with-us/account-setup/refresh-url",
-        return_url = "http://localhost:3000/partner-with-us/account-setup/return-url",
+        refresh_url = "https://online-food-delivery-system.vercel.app/partner-with-us/account-setup/refresh-url",
+        return_url = "https://online-food-delivery-system.vercel.app/partner-with-us/account-setup/return-url",
         type = "account_onboarding",
     )
 
@@ -297,8 +297,8 @@ def completeStripeAccount(request):
     accountLinkResponse = stripe.AccountLink.create(
         account = getStripeData.accountID,
         # Get the hosted URL from env variables
-        refresh_url = "http://localhost:3000/partner-with-us/account-setup/refresh-url",
-        return_url = "http://localhost:3000/partner-with-us/account-setup/return-url",
+        refresh_url = "https://online-food-delivery-system.vercel.app/partner-with-us/account-setup/refresh-url",
+        return_url = "https://online-food-delivery-system.vercel.app/partner-with-us/account-setup/return-url",
         type = "account_onboarding",
     )
 
@@ -353,8 +353,8 @@ def stripeRefreshURL(request):
         accountLinkResponse = stripe.AccountLink.create(
             account = getStripeData.accountID,
             # Get the hosted URL from env variables
-            refresh_url = "http://localhost:3000/partner-with-us/account-setup/refresh-url",
-            return_url = "http://localhost:3000/partner-with-us/account-setup/return-url",
+            refresh_url = "https://online-food-delivery-system.vercel.app/partner-with-us/account-setup/refresh-url",
+            return_url = "https://online-food-delivery-system.vercel.app/partner-with-us/account-setup/return-url",
             type = "account_onboarding",
         )
     except ObjectDoesNotExist:

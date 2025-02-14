@@ -368,8 +368,8 @@ def checkout(request):
             line_items=line_items,
             mode='payment',
             currency='inr',
-            success_url= 'http://localhost:3000/my-account',
-            cancel_url= 'http://localhost:3000/checkout/cancel',
+            success_url= 'https://online-food-delivery-system.vercel.app/my-account',
+            cancel_url= 'https://online-food-delivery-system.vercel.app/checkout/cancel',
             # Passes the metadata to a successfull checkout session by stripe if checkout is completed.
             # The metadata will be used to save order details
             metadata = {
