@@ -405,6 +405,12 @@ def webhook_received(request):
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
     event = None
 
+    print("Received payload:", payload)  # Debugging
+    print("Received signature:", sig_header)  # Debugging
+
+    if not sig_header:
+        return HttpResponse({"error": "Missing Stripe-Signature header"}, status=400)
+    
     # Verify webhook signature and extract the event.
     # See https://stripe.com/docs/webhooks/signatures for more information.
     try:
@@ -413,10 +419,12 @@ def webhook_received(request):
         )
     except ValueError as e:
         # Invalid payload.
-        return HttpResponse(status=400)
+        print("Error: Invalid payload")  # Debugging
+        return HttpResponse({"error": "Invalid signature"},status=400)
     except stripe.error.SignatureVerificationError as e:
         # Invalid Signature.
-        return HttpResponse(status=400)
+        print("Error: Invalid signature")  # Debugging
+        return HttpResponse({"error": "Invalid signature"},status=400)
 
     if event["type"] == "checkout.session.completed":
         session = event["data"]["object"]
