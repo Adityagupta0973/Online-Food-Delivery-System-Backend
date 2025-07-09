@@ -239,7 +239,7 @@ def createStripeAccount(request):
     # Get the category for which stripe account has to be created
     getCategory = Category.objects.get(user=request.user)
 
-    stripe.api_key = 'sk_test_51QmXiwGxJCMHsai04rgrfwstnIM16SB5jS2oTor9UFRbOWy0skksq0mVoRNgWItynzq3Bb3cGaP46Xq9v2hWgAUA004e6WwLXJ'
+    stripe.api_key = os.getenv("STRIPE_API_KEY") 
     
     # Check if account is already created, if so then return back otherwise continue to create a stripe account for category
     try:
@@ -322,7 +322,7 @@ def stripeGetDetails(request):
         return Response({'Stripe account does not exist'})
 
     # CASE 2: Check if account is created, but the stripe onboarding process is not completed (all details are not provided)
-    stripe.api_key = 'sk_test_51QmXiwGxJCMHsai04rgrfwstnIM16SB5jS2oTor9UFRbOWy0skksq0mVoRNgWItynzq3Bb3cGaP46Xq9v2hWgAUA004e6WwLXJ'
+    stripe.api_key = os.getenv("STRIPE_API_KEY") 
 
     # Retrieves the details of the stripe account from stripe's server
     # Refer: https://stripe.com/docs/api/accounts/retrieve
@@ -370,7 +370,7 @@ def stripeRefreshURL(request):
 @permission_classes([IsAuthenticated])
 def stripeReturnURL(request):
 
-    stripe.api_key = 'sk_test_51QmXiwGxJCMHsai04rgrfwstnIM16SB5jS2oTor9UFRbOWy0skksq0mVoRNgWItynzq3Bb3cGaP46Xq9v2hWgAUA004e6WwLXJ'
+    stripe.api_key = os.getenv("STRIPE_API_KEY") 
     
     try:
         # Get the category's stripe account ID stored in our database
