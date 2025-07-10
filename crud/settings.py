@@ -16,6 +16,10 @@ SECRET_KEY = 'django-insecure-6jnq=ln+i8usqpyskte^%*&mbw%tef^0^k&)82hifpk*nby--$
 DEBUG = True 
 
 ALLOWED_HOSTS = ['web-production-1b923.up.railway.app','127.0.0.1','https://online-food-delivery-system.vercel.app']
+CSRF_TRUSTED_ORIGINS = [
+    'https://web-production-1b923.up.railway.app',
+    'https://online-food-delivery-system.vercel.app'
+]
 
 
 # Application definition
