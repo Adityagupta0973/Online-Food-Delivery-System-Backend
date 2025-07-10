@@ -1,6 +1,5 @@
 from pathlib import Path
 import os 
-import django_heroku
 import dj_database_url
 from datetime import timedelta 
 
@@ -168,7 +167,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
-django_heroku.settings(locals())
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
