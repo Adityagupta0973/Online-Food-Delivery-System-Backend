@@ -469,24 +469,25 @@ def handle_completed_checkout_session(connected_account_id, session, request):
     
 
     # ------- To send the user a text SMS using Twilio informing about their successfull order placement -----
-    
-    number = MobileNumber.objects.get(user=sessionUser).number
+    if os.getenv('TWILIO_ENABLED', 'False') == 'True':
+        number = MobileNumber.objects.get(user=sessionUser).number
 
-    # Find your Account SID and Auth Token at twilio.com/console
-    # and set the environment variables. See http://twil.io/secure
-    account_sid = os.getenv('TWILIO_ACCOUNT_SID')
-    auth_token = os.getenv('TWILIO_AUTH_TOKEN')
-    client = Client(account_sid, auth_token)
+        # Find your Account SID and Auth Token at twilio.com/console
+        # and set the environment variables. See http://twil.io/secure
+        account_sid = os.getenv('TWILIO_ACCOUNT_SID')
+        auth_token = os.getenv('TWILIO_AUTH_TOKEN')
+        client = Client(account_sid, auth_token)
 
-    message = client.messages \
-                    .create(
-                        messaging_service_sid='MGf50dd0f886cfaa39b05a96200c338c37',
-                        to='+' + str(number),
-                        body="Your order has been successfully placed at From Our Kitchen " + str(cart.count()) + "x item(s) ordered with a total amount of " + str(cart.first().totalAmount) +". \nHappy Eating!"
-                    )
+        message = client.messages \
+                        .create(
+                            messaging_service_sid='MGf50dd0f886cfaa39b05a96200c338c37',
+                            to='+' + str(number),
+                            body="Your order has been successfully placed at From Our Kitchen " + str(cart.count()) + "x item(s) ordered with a total amount of " + str(cart.first().totalAmount) +". \nHappy Eating!"
+                        )
 
-    print('Message sent ✅:', message.status)
-
+        print('Message sent ✅:', message.status)
+    else:
+        print("🔕 Twilio messaging is currently disabled (TWILIO_ENABLED is False)")
 
 
 # To get the active orders of the logged in user
