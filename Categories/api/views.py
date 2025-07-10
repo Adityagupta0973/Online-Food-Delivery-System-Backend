@@ -220,7 +220,7 @@ def updateOrderStatus(request, id):
 
     message = client.messages \
                     .create(
-                        messaging_service_sid='MG3689472a26e433f57909e6a580e2d9be',
+                        messaging_service_sid='MGf50dd0f886cfaa39b05a96200c338c37',
                         to='+' + str(number),
                         body="Your order #" + str(order.id) + " has been delivered! Thanks for ordering at From Our Kitchen ! " 
                     )
