@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-6jnq=ln+i8usqpyskte^%*&mbw%tef^0^k&)82hifpk*nby--$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True 
 
-ALLOWED_HOSTS = ['web-production-1b923.up.railway.app','from-our-kitchen-80da3abcca49.herokuapp.com','127.0.0.1','https://online-food-delivery-system.vercel.app']
+ALLOWED_HOSTS = ['https://web-production-1b923.up.railway.app','127.0.0.1','https://online-food-delivery-system.vercel.app']
 
 
 # Application definition
@@ -158,10 +158,10 @@ TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
-# Static files (CSS, JavaScript, Images)
+# Static files (CSS, JavaScript, Images) 
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
