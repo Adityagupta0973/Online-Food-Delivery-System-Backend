@@ -482,7 +482,7 @@ def handle_completed_checkout_session(connected_account_id, session, request):
                         .create(
                             messaging_service_sid='MGf50dd0f886cfaa39b05a96200c338c37',
                             to='+' + str(number),
-                            body="Your order has been successfully placed at From Our Kitchen " + str(cart.count()) + "x item(s) ordered with a total amount of " + str(cart.first().totalAmount) +". \nHappy Eating!"
+                            body="From Our Kitchen: Order Placed (" + str(cart.count()) + " item(s), Rs." + str(cart.first().totalAmount) +").\nHappy Eating!"
                         )
 
         print('Message sent ✅:', message.status)
